@@ -104,7 +104,10 @@ const Connection = function(options) {
 	if (!subuser) {
 		throw new OptionsAbsentError('subuser', ['username,', 'subusername']);
 	}
-	[ this.username, this.subUsername ] = subuser.split(':');
+	// [ this.username, this.subUsername ] = subuser.split(':');
+	var tmpA = subuser.split(':');
+	this.username = tmpA[0];
+	this.subUsername = tmpA[1];
 
 	// key
 	var key = options.key;
@@ -228,7 +231,7 @@ Connection.prototype.createContainer = function(options, callback) {
 		this.agent.put(urlname, '', (err, response) => {
 			let data = null;
 			if (!err) {
-				if (['201', '202'].includes(response.statusCode)) {
+				if (['201', '202'].indexOf(response.statusCode) >= 0) {
 					data = {
 						transId: response.headers['x-trans-id']
 					};
