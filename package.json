@@ -14,7 +14,7 @@
     "license": "ISC",
     "bin": {},
     "dependencies": {
-        "htp": "^0.2.1",
+        "htp": "https://github.com/ksx123/nodejs.htp.git#support4",
         "if2": "^0.1.2",
         "jinang": "~0.0.2",
         "noda": "^0.1.1"
